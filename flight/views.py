@@ -2,16 +2,23 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from rest_framework import generics, viewsets
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.views import APIView
 from rest_framework import status
 from .serializers import *
+from rest_framework.permissions import IsAuthenticated
 
-
-@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def getFlights(request):
     # TODO : check input_passengers <= passengers + total_passengers
-    flights = Flight.objects.all()
+    # TODO : check data is not empty
+    source = request.POST.get('source')
+    destination = request.POST.get('destination')
+    departure_date = request.POST.get('departure_date')
+    # passengers_num = request.POST.get('passengers')
+
+
+    flights = Flight.objects.filter(source=source, destination=destination, departure_date=departure_date)
     flightSerializer = FlightSerializer(flights, many=True)
 
     i = 0
@@ -28,4 +35,4 @@ def getFlights(request):
         context[i] = flight_info
         i += 1
 
-    return render(request, 'flight-index.html', {'context': context})
+    return render(request, 'flight_search.html', {'context': context})

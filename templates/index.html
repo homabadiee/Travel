@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+{#    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>#}
+
 
 
 
@@ -86,26 +88,26 @@
         
                     <!-- Booking Information -->
                     <div class="container mt-4 mb-5">
-                        <form method="post" action="{% url 'flightSearch' %}">
+                        <form method="POST" action="{% url 'flightSearch' %}">
                             {% csrf_token %}
                             <div class="form-row">
-                                <div class="col-md-2">
-                                    <input type="text" class="form-control" placeholder="SOURCE">
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" placeholder="SOURCE" name="source">
                                 </div>
-                                <div class="col-md-2">
-                                    <input type="text" class="form-control" placeholder="DESTINATION">
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" placeholder="DESTINATION" name="destination">
                                 </div>
-                                <div class="col-md-2">
-                                    <input type="date" class="form-control" placeholder="CHECK IN">
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control"  name="departure_date">
                                 </div>
-                                <div class="col-md-2">
-                                    <input type="date" class="form-control" placeholder="CHECK OUT">
+{#                                <div class="col-md-2">#}
+{#                                    <input type="date" class="form-control"  name="end_date">#}
+{#                                </div>#}
+                                <div class="col-md-3">
+                                    <input type="number" class="form-control" placeholder="PASSENGERS" name="passengers">
                                 </div>
-                                <div class="col-md-2">
-                                    <input type="number" class="form-control" placeholder="PASSENGERS">
-                                </div>
-                                <div class="col-md-2">
-                                    <button type="submit" class="btn btn-primary">Search</button>
+                                <div class="col-md-1">
+                                    <button type="submit" class="btn btn-primary form_button">Search</button>
                                 </div>
                             </div>
                         </form>
@@ -116,7 +118,6 @@
         </div>
     </div>
 
-    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
 
 </body>
 

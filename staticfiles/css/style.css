@@ -1,4 +1,11 @@
 
+.form_button
+{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
 .main
 {
     /*background-color: rgba(213, 213, 213, 0.516);*/
