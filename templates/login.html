@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login form</title>
+    <link rel="stylesheet" href="{% static 'css/style_login.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <div class="login__form">
+            <div class="login__form__image1">
+                <img src="{% static 'image/img3.jpg' %}"
+                    alt="">
+            </div>
+            <div class="login__form__right">
+                <h1> Login </h1>
+                <form class="was-validated" method="POST" action="">
+                    {% csrf_token %}
+                    <label for="input_username"> Enter Username
+                        <input type="username" id="input_username" name="username">
+                    </label>
+                    <label for="input_pass"> Enter Password
+                        <input type="password" id="input_pass" name="password">
+                    </label>
+                    <button class="login-button" type="submit">Login</button>
+                    <div class="Sign in" style="float: right;">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                        <a href="{% url 'register' %}">Sign Up</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

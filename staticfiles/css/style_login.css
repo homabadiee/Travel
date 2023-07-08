@@ -1,0 +1,140 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+
+    max-width: 100%;
+    height: auto;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(160, 214, 232);
+    font-family: sans-serif;
+}
+
+.container{
+
+    padding: 3rem 1rem;
+    max-width: 90%;
+    
+    
+}
+
+.login__form{
+
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(236, 239, 243);
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 80vh;
+}
+.login__form__image1 img{
+
+    width: 100%;
+    object-fit: cover;
+}
+
+.login__form__right{
+    padding: 2rem;
+    
+}
+.login__form__right h1{
+    margin-bottom: 1rem;
+}
+
+.login__form__right form input ,
+ .login__form__right form button {
+
+    width: 100%;
+    margin-bottom: 1rem;
+    border: 1px solid rgb(13, 69, 83);
+    padding: 0.5rem;
+    border-radius: 8px;
+    outline: none;
+}   
+
+
+.login__form__right form input:focus{
+    border: 1px solid rgb(14, 80, 99);
+    box-shadow: 0 0 2px 1px rgb(24, 125, 153);
+}
+
+
+.login__form__right form label{
+    color: rgb(88, 119, 221);
+    font-size: 0.8rem;
+} 
+
+
+.login__form__right form button{
+    background-color: rgb(203, 232, 240);
+    border: none;
+    color: rgb(67, 127, 196);
+    font-size: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: background 0.25s ease;
+} 
+
+.login__form__right form button:hover{
+    background-color: rgb(14, 80, 99);
+
+} 
+
+
+@media screen and (min-width: 768px){
+
+
+    .container{
+
+        padding: 2rem ;
+        max-width: 60%; 
+    }
+
+
+    .login__form{
+
+        display: flex;
+        flex-direction: row;
+        background-color: rgb(236, 239, 243);
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+
+    .login__form__right {
+        padding: 3rem;
+        flex: 50%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+    }
+
+    .login__form__image1 img{
+
+        height: 100%;
+        width: 100%;
+      
+    }
+
+
+    .login__form__image1 {
+        flex: 50%;
+    }
+
+}
+    
+/*
+hsla(22, 79%, 50%, 0.918)
+
+
+*/

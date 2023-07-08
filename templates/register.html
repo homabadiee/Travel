@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register form</title>
+    <link rel="stylesheet" href="{% static 'css/style_login.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <div class="login__form">
+            <div class="login__form__image1">
+                <img src="{% static 'image/img3.jpg' %}"
+                    alt="">
+            </div>
+            <div class="login__form__right">
+                <h1> Register </h1>
+                <form class="was-validated" method="POST" action="">
+                    {% csrf_token %}
+                    <label for="input_phone"> Phone
+{#                        <input type="text" class="form-control" required pattern="09[0-9]{9}">#}
+                        {{ form.phone }}
+                    </label>
+                    <label for="input_email"> Email
+{#                        <input type="email" class="form-control" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" >#}
+                        {{ form.email }}
+                    </label>
+                    <label for="input_pass"> Password
+{#                        <input type="password" id="input_pass">#}
+                        {{ form.password1 }}
+                    </label>
+                    <label for="input_confPass">Confirm Password
+{#                        <input type="password" id="input_pass">#}
+                        {{ form.password2 }}
+                    </label>
+                    <button class="login-button" type="submit">register</button>
+                    <div class="Sign in" style="float: right;">
+                        <a href="{% url 'login' %}">Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

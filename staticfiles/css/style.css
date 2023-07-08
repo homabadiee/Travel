@@ -1,0 +1,71 @@
+
+.main
+{
+    /*background-color: rgba(213, 213, 213, 0.516);*/
+    background-color: #264b5d;
+}
+
+.center_item
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info_name
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 30%;
+}
+
+.info_card_content
+{
+    height: 20vh;
+    font-weight: bold;
+    font-size:x-large;
+}
+
+.search_box
+{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card
+{
+    margin-bottom: 30px;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+.card-header
+{
+    background-color: #fff;
+    border-bottom: none;
+    text-align: center;
+}
+.card-title
+{
+    font-weight: bold;
+    color:white;
+}
+.card-body
+{
+    padding: 50px;
+}
+.form-group
+{
+    margin-bottom: 30px;
+}
+.form-control
+{
+    border-radius: 0;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    box-shadow: none;
+}
+
