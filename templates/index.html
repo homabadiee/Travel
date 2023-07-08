@@ -7,6 +7,7 @@
     <title>Travel Booking</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/style_form.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
 {#    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>#}
@@ -48,7 +49,7 @@
 
         <div>
             <div class="search_box">
-                <div class="shadow-lg bg-light mt-n5" style="width:50%; z-index:9;">
+                <div class="shadow-lg bg-light mt-n5" style="border-radius: 20px; width:50%; z-index:9;">
                     <!-- Booking -->
                     <div class="row">
                         <div class="container" style="z-index:9;">
@@ -87,11 +88,12 @@
                     </div>
         
                     <!-- Booking Information -->
-                    <div class="container mt-4 mb-5">
+                    <div class="container mt-4 mb-5 search_box">
                         <form method="POST" action="{% url 'flightSearch' %}">
                             {% csrf_token %}
-                            <div class="form-row">
-                                <div class="col-md-3">
+                            <div class="form">
+                                <div class="row">
+                                    <div class="col-md-3">
                                     <input type="text" class="form-control" placeholder="SOURCE" name="source">
                                 </div>
                                 <div class="col-md-3">
@@ -106,9 +108,14 @@
                                 <div class="col-md-3">
                                     <input type="number" class="form-control" placeholder="PASSENGERS" name="passengers">
                                 </div>
-                                <div class="col-md-1">
-                                    <button type="submit" class="btn btn-primary form_button">Search</button>
                                 </div>
+
+                                <div class="row" style="padding-top: 2rem">
+                                    <div class="col-md-12 form_button">
+                                        <button type="submit" class="btn btn-primary form_button">Search</button>
+                                    </div>
+                                </div>
+
                             </div>
                         </form>
                 

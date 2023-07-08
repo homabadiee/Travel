@@ -1,0 +1,16 @@
+.myform{
+
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(236, 239, 243);
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 80vh;
+    padding: 4rem;
+}
+
+.form_button{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}

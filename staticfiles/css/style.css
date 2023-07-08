@@ -37,10 +37,13 @@
 
 .search_box
 {
-    background-color: white;
+    /*background-color: white;*/
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 .card

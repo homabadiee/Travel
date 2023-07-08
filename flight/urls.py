@@ -3,6 +3,6 @@ from . import views
 
 urlpatterns = [
 
-    path('flightSearch', views.getFlights, name='flightSearch'),
+    path('flightSearch', views.FlightList, name='flightSearch'),
 
 ]
