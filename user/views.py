@@ -101,12 +101,6 @@ def confirmEditProfile(request):
         email = request.POST.get('email')
         birthDate = request.POST.get('birthDate')
 
-        # users = PassengerUser.objects.filter(
-        #                                         first_name=first_name, last_name=last_name, address=address,
-        #                                         phone=phone, birthDate=birthDate
-        #                                     )
-        print(user)
-
         data = {
             'first_name': first_name,
             'last_name': last_name,
@@ -117,28 +111,9 @@ def confirmEditProfile(request):
 
         }
         userSerializer = UserSerializer(instance=user, data=data)
-        print(userSerializer.is_valid())
-        print("sth", userSerializer.errors)
 
         if userSerializer.is_valid():
-            print("sth2", userSerializer)
             userSerializer.save()
-        #
-        #
-        # context = {
-        #     'id': userSerializer.data['id'], 'source': userSerializer.data['source'],
-        #     'destination': userSerializer.data['destination'],
-        #     'departure_date': userSerializer.data['departure_date'],
-        #     'departure_time': userSerializer.data['departure_time'],
-        #     'arrival_time': userSerializer.data['arrival_time'],
-        #     'total_passengers': userSerializer.data['total_passengers'],
-        #     'name': userSerializer.data['name'], 'number': userSerializer.data['number'],
-        #     'terminal': userSerializer.data['terminal'],
-        #     'included_Baggage': userSerializer.data['included_Baggage'],
-        #     'type': userSerializer.data['type'],
-        #     'price': userSerializer.data['price']
-        # }
-
 
     return redirect('index')
 
@@ -153,7 +128,7 @@ def getUser(request):
         payload = jwt.decode(token, 'secret', algorithms=['HS256'])
     except jwt.ExpiredSignatureError:
         raise AuthenticationFailed('Unauthenticated!')
-    user = PassengerUser.objects.filter(id=payload['id'])
+    user = PassengerUser.objects.get(id=payload['id'])
     return user
 
 
