@@ -30,11 +30,11 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-4">
                 <div class="navbar-nav ml-auto py-0">
-                    <a href="#" class="nav-item nav-link active">Home</a>
+                    <a href="url: {% url 'index' %}" class="nav-item nav-link active">Home</a>
                     <a href="#" class="nav-item nav-link">About</a>
                     <a href="#" class="nav-item nav-link">Contact</a>
                     <a href="#" class="nav-item nav-link">
-                        <span class="text-primary">Login</span>
+                        <span class="text-primary">Profile</span>
                     </a>
 
                 </div>
@@ -44,7 +44,7 @@
     </div>
 
     <div class="container-fluid">
-        <div style="background-color: palevioletred">
+        <div>
 
              {% for key, flight in context.items %}
 
@@ -80,13 +80,30 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer bg-primary" style="font-size: larger; color:white; font-weight:bold;">
+                        <div class="card-footer bg-primary">
                             <div class="row">
                                 <div class="col-md-6">
                                     price : {{ flight.price }}T
                                 </div>
                                 <div class="col-md-6">
-                                    <button class="btn bg-light" style="float: right;" data-toggle="modal" data-target="#info_detail">Detail</button>
+                                    <button class="btn bg-light ml-2" style="float: right;" data-toggle="modal" data-target="#info_detail">Detail</button>
+                                    <a class="btn bg-light" id="reserve_button" type="button" href="{% url 'flightReserve' %}" onclick="getId()" style="float: right;">Reserve</a>
+                                    <script>
+                                        function getId()
+                                        {
+                                            var id = "{{ flight.id }}";
+                                            console.log(id);
+                                            $.ajax({
+                                              type: "POST",
+                                              {#url: {% url 'flightReserve' %},#}
+                                              url: "http://127.0.0.1:8000/flightReserve",
+                                              data: {'id': id},
+                                              success: function(result){
+                                                alert("Success");
+                                              }
+                                            });
+                                        }
+                                    </script>
                                 </div>
                             </div>
                         </div>

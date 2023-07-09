@@ -8,4 +8,4 @@ from .models import PassengerUser
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = PassengerUser
-        fields = ['email', 'phone', 'password']
+        fields = ['first_name', 'last_name', 'address', 'phone', 'email', 'birthDate']

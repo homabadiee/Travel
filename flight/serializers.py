@@ -8,7 +8,7 @@ class FlightSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Flight
         fields = [
-                    'source', 'destination', 'departure_date', 'departure_time', 'arrival_time',
-                    'total_passengers', 'name', 'number', 'terminal', 'included_Baggage',
-                    'type', 'price'
+                    'id', 'source', 'destination', 'departure_date', 'departure_time',
+                    'arrival_time', 'total_passengers', 'name', 'number',
+                    'terminal', 'included_Baggage', 'type', 'price'
                  ]

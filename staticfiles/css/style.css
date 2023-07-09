@@ -1,3 +1,21 @@
+.myform
+{
+
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(236, 239, 243);
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 80vh;
+    padding: 4rem;
+}
+
+.form_button
+{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
 
 .form_button
 {
@@ -9,7 +27,7 @@
 .main
 {
     /*background-color: rgba(213, 213, 213, 0.516);*/
-    background-color: #264b5d;
+    background-color: rgb(160, 214, 232);
 }
 
 .center_item
@@ -43,7 +61,7 @@
     justify-content: center;
     flex-direction: row;
     border-radius: 20px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .card
@@ -77,5 +95,12 @@
     border: none;
     border-bottom: 2px solid #ccc;
     box-shadow: none;
+}
+
+.card-footer
+{
+    font-size: larger;
+    color:white;
+    font-weight:bold;
 }
 

@@ -3,11 +3,15 @@ import jwt
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
+from rest_framework.decorators import api_view
+
 from .forms import CreateRegisterForm
 from rest_framework.authtoken.models import Token
 from django.core.cache import cache
 from django.http import HttpResponseBadRequest, HttpResponse
-
+from rest_framework.exceptions import AuthenticationFailed
+from .models import PassengerUser
+from .serializers import UserSerializer
 
 # @ratelimit(key='user', rate='5/m', block=True)  # Limit to 5 requests per minute per user
 # @ratelimit(key='ip', rate='10/m', block=True)  # Limit to 10 requests per minute per IP
@@ -79,3 +83,77 @@ def registerView(request):
 
 def index(request):
     return render(request, 'index.html')
+
+
+
+def editProfile(request):
+    return render(request, 'pesonal_info.html')
+
+@api_view(['POST', 'GET'])
+def confirmEditProfile(request):
+    user = getUser(request)
+
+    if user is not None:
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        address = request.POST.get('address')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+        birthDate = request.POST.get('birthDate')
+
+        # users = PassengerUser.objects.filter(
+        #                                         first_name=first_name, last_name=last_name, address=address,
+        #                                         phone=phone, birthDate=birthDate
+        #                                     )
+        print(user)
+
+        data = {
+            'first_name': first_name,
+            'last_name': last_name,
+            'address': address,
+            'phone': phone,
+            'email': email,
+            'birthDate': birthDate
+
+        }
+        userSerializer = UserSerializer(instance=user, data=data)
+        print(userSerializer.is_valid())
+        print("sth", userSerializer.errors)
+
+        if userSerializer.is_valid():
+            print("sth2", userSerializer)
+            userSerializer.save()
+        #
+        #
+        # context = {
+        #     'id': userSerializer.data['id'], 'source': userSerializer.data['source'],
+        #     'destination': userSerializer.data['destination'],
+        #     'departure_date': userSerializer.data['departure_date'],
+        #     'departure_time': userSerializer.data['departure_time'],
+        #     'arrival_time': userSerializer.data['arrival_time'],
+        #     'total_passengers': userSerializer.data['total_passengers'],
+        #     'name': userSerializer.data['name'], 'number': userSerializer.data['number'],
+        #     'terminal': userSerializer.data['terminal'],
+        #     'included_Baggage': userSerializer.data['included_Baggage'],
+        #     'type': userSerializer.data['type'],
+        #     'price': userSerializer.data['price']
+        # }
+
+
+    return redirect('index')
+
+
+def getUser(request):
+    token = request.COOKIES.get('jwt')
+
+    if not token:
+        raise AuthenticationFailed('Unauthenticated!')
+
+    try:
+        payload = jwt.decode(token, 'secret', algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        raise AuthenticationFailed('Unauthenticated!')
+    user = PassengerUser.objects.filter(id=payload['id'])
+    return user
+
+
